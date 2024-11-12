@@ -1,0 +1,5 @@
+backend/obj/
+backend/bin/
+frontend/node_modules/
+node_modules
+backend/appsettings.json
