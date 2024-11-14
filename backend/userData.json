@@ -1,0 +1,16 @@
+[
+    {
+        "Id": 1,
+        "Username": "amaan",
+        "base64Creds": "dXNlcjE6cGFzc3dvcmQ=",
+        "hash": "hash_of_password",
+        "Password": "1234"
+    },
+    {
+        "Id": 2,
+        "Username": "user2",
+        "base64Creds": "dXNlcjI6cGFzc3dvcmQ=",
+        "hash": "hash_of_password",
+        "Password": "password2"
+    }
+]

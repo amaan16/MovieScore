@@ -5,11 +5,11 @@ namespace MovieScore.Models;
 
 public class PrivateUsers
 {
-    public int Id { get; set;}
-    public string Username{get; set;}
-    public string base64Creds {get; set;}
-    public string hash {get;set;}
-    public string Password {get; set;}
+    public int? Id { get; set;}
+    public string? Username{get; set;}
+    public string? base64Creds {get; set;}
+    public string? hash {get;set;}
+    public string? Password {get; set;}
 
     public PrivateUsers() { }
     
