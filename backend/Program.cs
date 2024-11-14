@@ -68,11 +68,7 @@ app.MapGet("/Reset", () =>
             
         }  
         movies.SaveChanges();
-        movies.Database.ExecuteSqlRaw("PRAGMA wal_checkpoint;");
-
-
-        
-        
+        movies.Database.ExecuteSqlRaw("PRAGMA wal_checkpoint;"); 
     }
 
     using(DbContext users = new UsersContext())
@@ -95,20 +91,14 @@ app.MapGet("/Reset", () =>
             
         }  
         users.SaveChanges();
-        users.Database.ExecuteSqlRaw("PRAGMA wal_checkpoint;");
-
-
-        
-        
+        users.Database.ExecuteSqlRaw("PRAGMA wal_checkpoint;");  
     }
-
-        
 
 })
 .WithName("Reset Data")
 .WithOpenApi();
 
-app.MapGet("/movies/{tag}", (string tag) =>
+app.MapGet("/movies", () =>
 {
     var options = new JsonSerializerOptions
     {
@@ -116,9 +106,10 @@ app.MapGet("/movies/{tag}", (string tag) =>
     };
     using(MSContext movie = new MSContext())
     {          
-        List<Movie>? source = movie.Movies
-                                   .Where(m => m.Tag.ToLower() == tag.ToLower()) 
-                                   .ToList();
+        // List<Movie>? source = movie.Movies
+        //                            .Where(m => m.Tag.ToLower() == tag.ToLower()) 
+        //                            .ToList();
+        List<Movie>? source = movie.Movies.ToList();
         return source;
     }  
 })

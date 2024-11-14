@@ -2,8 +2,6 @@ import './App.css';
 import Banner from './components/banner';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import MovieDetail from './components/movieDetail';
-
-
 import React, { useState, useEffect } from 'react';
 
 
@@ -16,46 +14,49 @@ function App() {
   const [bannerResult, setBannerResult] = useState([]);
   const [actionResult, setActionResult] = useState([]);
 
-  // Function to fetch data from the API based on tag
-  const fetchMoviesByTag = async (tag) => {
+  // Function to fetch all movies from the API
+  const fetchAllMovies = async () => {
     try {
-      //todo: need to change to single api call, and process it in the frontend/client side
-      const response = await fetch(API_BASE_URL + `/movies/${tag}`);
+      const response = await fetch(API_BASE_URL + '/movies');
       if (!response.ok) {
-        throw new Error(`Error fetching ${tag} data`);
+        throw new Error('Error fetching movies data');
       }
       const data = await response.json();
       return data;
     } catch (error) {
-      console.error(`Failed to fetch ${tag}:`, error);
+      console.error('Failed to fetch movies:', error);
       return [];
     }
   };
 
   useEffect(() => {
-    // Fetch each tag and set its respective state
-    const fetchAllData = async () => {
-      const trending = await fetchMoviesByTag('trending');
+    // Fetch all movies and process them into separate lists
+    const fetchAndProcessMovies = async () => {
+      const allMovies = await fetchAllMovies();
+
+      // Separate movies by tags
+      const trending = allMovies.filter(movie => movie.tag === 'trending');
+      const banner = allMovies.filter(movie => movie.tag === 'banner');
+      const action = allMovies.filter(movie => movie.tag === 'action');
+
+      // Update the state with filtered movies
       setTrendingResult(trending);
-
-      const banner = await fetchMoviesByTag('banner');
       setBannerResult(banner);
-
-      const action = await fetchMoviesByTag('action');
       setActionResult(action);
     };
 
-    fetchAllData();
+    fetchAndProcessMovies();
   }, []);
 
   return (
-    <div className='App'><Router>
-      <Routes>
-        <Route path="/" element={<Banner trendingResult={trendingResult} bannerResult={bannerResult} actionResult={actionResult} />} />
-        <Route path="/movie" element={<MovieDetail />} />
-        <Route path="/watchlist" element ={<MovieDetail />} />
-      </Routes>
-    </Router></div>
+    <div className='App'>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Banner trendingResult={trendingResult} bannerResult={bannerResult} actionResult={actionResult} />} />
+          <Route path="/movie" element={<MovieDetail />} />
+          <Route path="/watchlist" element={<MovieDetail />} />
+        </Routes>
+      </Router></div>
   );
 }
 

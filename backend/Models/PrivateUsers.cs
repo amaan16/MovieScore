@@ -10,6 +10,7 @@ public class PrivateUsers
     public string? base64Creds {get; set;}
     public string? hash {get;set;}
     public string? Password {get; set;}
+    public string? WatchlistIds {get; set;}
 
     public PrivateUsers() { }
     
