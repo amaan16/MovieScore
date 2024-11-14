@@ -12,6 +12,7 @@ namespace MovieScore.Models
         public double Rating { get; set; } // Assuming rating as a decimal value
         public string Tag { get; set; }
         public string Type { get; set; } // e.g., Genre
-        public string Path { get; set; } // Path to movie image or file
+        public string? Path { get; set; } // Path to movie image or file
+        public string? BackdropPath { get; set; } // Path to movie backdrop image or file
     }
 }

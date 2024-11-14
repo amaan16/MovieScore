@@ -4,144 +4,13 @@ import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
 import { Carousel } from 'react-bootstrap';
 import './banner.css';
-import React, { useState, useEffect } from 'react';
+import React, { useContext } from 'react';
+import { MovieContext } from '../movieContext';
 
+const API_BASE_URL = "https://moviescorebackend-abbscmgzexfdfhg0.northcentralus-01.azurewebsites.net";
 
-const API_BASE_URL = "http://localhost:5057";
-
-
-// const bannerResult = [
-//   {
-//     movieName: "Movie One",
-//     description: "An exciting adventure about courage and resilience.",
-//     imagePath: "https://image.tmdb.org/t/p/original/rijaG2Z2XEeIUfWUn4fzmzTVCuK.jpg"
-//   },
-//   {
-//     movieName: "Movie Two",
-//     description: "A heartwarming story of friendship and discovery.",
-//     imagePath: "https://image.tmdb.org/t/p/original/rijaG2Z2XEeIUfWUn4fzmzTVCuK.jpg"
-//   },
-//   {
-//     movieName: "Movie Three",
-//     description: "An action-packed journey through the wild unknown.",
-//     imagePath: "https://image.tmdb.org/t/p/original/rijaG2Z2XEeIUfWUn4fzmzTVCuK.jpg"
-//   }
-// ];
-
-// const trendingResult = [
-//   {
-//     id: 1,
-//     poster_path: "https://image.tmdb.org/t/p/original/k42Owka8v91trK1qMYwCQCNwJKr.jpg"
-//   },
-//   {
-//     id: 2,
-//     poster_path: "https://image.tmdb.org/t/p/original/k42Owka8v91trK1qMYwCQCNwJKr.jpg"
-//   },
-//   {
-//     id: 3,
-//     poster_path: "https://image.tmdb.org/t/p/original/k42Owka8v91trK1qMYwCQCNwJKr.jpg"
-//   },
-//   {
-//     id: 3,
-//     poster_path: "https://image.tmdb.org/t/p/original/k42Owka8v91trK1qMYwCQCNwJKr.jpg"
-//   },
-//   {
-//     id: 3,
-//     poster_path: "https://image.tmdb.org/t/p/original/k42Owka8v91trK1qMYwCQCNwJKr.jpg"
-//   },
-//   {
-//     id: 3,
-//     poster_path: "https://image.tmdb.org/t/p/original/k42Owka8v91trK1qMYwCQCNwJKr.jpg"
-//   },
-//   {
-//     id: 3,
-//     poster_path: "https://image.tmdb.org/t/p/original/k42Owka8v91trK1qMYwCQCNwJKr.jpg"
-//   },
-//   {
-//     id: 3,
-//     poster_path: "https://image.tmdb.org/t/p/original/k42Owka8v91trK1qMYwCQCNwJKr.jpg"
-//   },
-//   {
-//     id: 3,
-//     poster_path: "https://image.tmdb.org/t/p/original/k42Owka8v91trK1qMYwCQCNwJKr.jpg"
-//   },
-//   {
-//     id: 3,
-//     poster_path: "https://image.tmdb.org/t/p/original/k42Owka8v91trK1qMYwCQCNwJKr.jpg"
-//   },
-//   {
-//     id: 3,
-//     poster_path: "https://image.tmdb.org/t/p/original/k42Owka8v91trK1qMYwCQCNwJKr.jpg"
-//   },
-//   {
-//     id: 3,
-//     poster_path: "https://image.tmdb.org/t/p/original/k42Owka8v91trK1qMYwCQCNwJKr.jpg"
-//   },
-//   {
-//     id: 3,
-//     poster_path: "https://image.tmdb.org/t/p/original/k42Owka8v91trK1qMYwCQCNwJKr.jpg"
-//   },
-//   {
-//     id: 3,
-//     poster_path: "https://image.tmdb.org/t/p/original/k42Owka8v91trK1qMYwCQCNwJKr.jpg"
-//   },
-//   {
-//     id: 3,
-//     poster_path: "https://image.tmdb.org/t/p/original/k42Owka8v91trK1qMYwCQCNwJKr.jpg"
-//   },
-//   {
-//     id: 3,
-//     poster_path: "https://image.tmdb.org/t/p/original/k42Owka8v91trK1qMYwCQCNwJKr.jpg"
-//   },
-//   {
-//     id: 3,
-//     poster_path: "https://image.tmdb.org/t/p/original/k42Owka8v91trK1qMYwCQCNwJKr.jpg"
-//   },
-//   {
-//     id: 3,
-//     poster_path: "https://image.tmdb.org/t/p/original/k42Owka8v91trK1qMYwCQCNwJKr.jpg"
-//   }
-// ];
-
-
-
-function Banner() {
-
-
-  const [trendingResult, setTrendingResult] = useState([]);
-  const [bannerResult, setBannerResult] = useState([]);
-  const [actionResult, setActionResult] = useState([]);
-
-  // Function to fetch data from the API based on tag
-  const fetchMoviesByTag = async (tag) => {
-    try {
-      const response = await fetch(`http://localhost:5057/movies/${tag}`);
-      if (!response.ok) {
-        throw new Error(`Error fetching ${tag} data`);
-      }
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      console.error(`Failed to fetch ${tag}:`, error);
-      return [];
-    }
-  };
-
-  useEffect(() => {
-    // Fetch each tag and set its respective state
-    const fetchAllData = async () => {
-      const trending = await fetchMoviesByTag('trending');
-      setTrendingResult(trending);
-
-      const banner = await fetchMoviesByTag('banner');
-      setBannerResult(banner);
-
-      const action = await fetchMoviesByTag('action');
-      setActionResult(action);
-    };
-
-    fetchAllData();
-  }, []);
+function Banner({ trendingResult, bannerResult, actionResult }) {
+  const { setSelectedMovie } = useContext(MovieContext);
 
   return (
     <div>
@@ -164,7 +33,7 @@ function Banner() {
             <Carousel.Item key={index}>
               <img
                 className="d-block w-100"
-                src={'/images'+banner.path}
+                src={'/images' + banner.path}
                 alt={`${banner.movieName} slide`}
               />
               <Carousel.Caption>
@@ -180,9 +49,13 @@ function Banner() {
           <h5 className="text-white">Trending Movies</h5>
           <div className="rowposter mt-3 p-3">
             {trendingResult.map((b) => (
-              <Link to={`/movie/${b.id}`} key={b.id}>
+              <Link
+                to="/movie"
+                key={b.id}
+                onClick={() => setSelectedMovie(b)}
+              >
                 <img
-                  src={'/images'+b.path}
+                  src={'/images' + b.path}
                   className="rowing largeposter"
                   alt="Movie Poster"
                 />
@@ -198,7 +71,7 @@ function Banner() {
             {actionResult.map((b) => (
               <Link to={`/movie/${b.id}`} key={b.id}>
                 <img
-                  src={'/images'+b.path}
+                  src={'/images' + b.path}
                   className="rowing largeposter"
                   alt="Movie Poster"
                 />

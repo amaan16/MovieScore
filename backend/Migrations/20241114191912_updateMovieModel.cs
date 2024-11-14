@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace backend.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class updateMovieModel : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -42,7 +42,8 @@ namespace backend.Migrations
                     Rating = table.Column<double>(type: "REAL", nullable: false),
                     Tag = table.Column<string>(type: "TEXT", nullable: false),
                     Type = table.Column<string>(type: "TEXT", nullable: false),
-                    Path = table.Column<string>(type: "TEXT", nullable: false)
+                    Path = table.Column<string>(type: "TEXT", nullable: true),
+                    BackdropPath = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {

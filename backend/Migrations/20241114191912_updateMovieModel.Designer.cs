@@ -11,8 +11,8 @@ using MovieScore;
 namespace backend.Migrations
 {
     [DbContext(typeof(MSContext))]
-    [Migration("20241107190037_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20241114191912_updateMovieModel")]
+    partial class updateMovieModel
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -54,6 +54,9 @@ namespace backend.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("BackdropPath")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -63,7 +66,6 @@ namespace backend.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Path")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<double>("Rating")
