@@ -165,6 +165,27 @@ app.MapPut("/movies/rate/{id}/{newRating}", async (int id,int newRating) =>
 .WithOpenApi();
 
 
+app.MapGet("/search/{searchTerm}", async (string searchTerm) =>
+{
+    using (var context = new MSContext())
+    {
+        // Perform a case-insensitive search on the title
+        var options = new JsonSerializerOptions
+        {
+            PropertyNameCaseInsensitive = true
+        };
+
+        List<Movie>? results = context.Movies
+            .Where(m => m.Title.ToLower().Contains(searchTerm.ToLower()))
+            .ToList();
+
+        //List<Movie>? source = movie.Movies.ToList();
+
+        return results;
+    }
+})
+.WithName("SearchMovies")
+.WithOpenApi();
 
 
 app.MapGet("/weatherforecast", () =>

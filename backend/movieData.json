@@ -210,21 +210,6 @@
     "BackdropPath": "/9s9o9RT9Yj6nDuRJjnJm78WFoFl.jpg"
   },
   {
-    "Id": 16,
-    "Title": "Red One",
-    "Director": "Jake Kasdan",
-    "Release": "2024-10-31",
-    "Description": "After Santa Claus (codename: Red One) is kidnapped, the North Pole's Head of Security must team up with the world's most infamous bounty hunter in a globe-trotting, action-packed mission to save Christmas.",
-    "Writers": "Chris Morgan",
-    "Actors": "Dwayne Johnson, Chris Evans",
-    "RatingCount": 10,
-    "Rating": 6.9,
-    "Tag": "action",
-    "Type": "movie",
-    "Path": "/cdqLnri3NEGcmfnqwk2TSIYtddg1.jpg",
-    "BackdropPath": "/rOmUuQEZfPXglwFs5ELLLUDKodL.jpg"
-  },
-  {
     "Id": 17,
     "Title": "The Count of Monte-Cristo",
     "Director": "Kevin Reynolds",
@@ -343,21 +328,6 @@
     "Type": "tv",
     "Path": "/abf8tHznhSvl9BAElD2cQeRr7do.jpg",
     "BackdropPath": "/sYXLeu5usz6yEz0k00FYvtEdodD.jpg"
-  },
-  {
-    "Id": 25,
-    "Title": "Red One",
-    "Director": "Jake Kasdan",
-    "Release": "2024-09-07",
-    "Description": "After Santa Claus (codename: Red One) is kidnapped, the North Pole's Head of Security must team up with the world's most infamous bounty hunter in a globe-trotting, action-packed mission to save Christmas.",
-    "Writers": "Chris Morgan, Hiram Garcia",
-    "Actors": "Dwayne Johnson, Chris Evans, Lucy Liu",
-    "RatingCount": 10,
-    "Rating": 6.6,
-    "Tag": "banner",
-    "Type": "movie",
-    "Path": "/cdqLnri3NEGcmfnqwk2TSIYtddg.jpg",
-    "BackdropPath": "/rOmUuQEZfPXglwFs5ELLLUDKodL.jpg"
   },
   {
     "Id": 26,

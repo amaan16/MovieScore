@@ -16,12 +16,12 @@ function Banner({ trendingResult, bannerResult, actionResult }) {
         <Carousel>
           {bannerResult.map((banner, index) => (
             <Carousel.Item key={index}>
-                            <Link to={`/movie`} key={banner.id} onClick={() => setSelectedMovie(banner.id)}>
-              <img
-                className="d-block w-100"
-                src={'/images' + banner.backdropPath}
-                alt={`${banner.movieName} slide`}
-              /></Link>
+              <Link to={`/movie`} key={banner.id} onClick={() => setSelectedMovie(banner.id)}>
+                <img
+                  className="d-block w-100"
+                  src={'/images' + banner.backdropPath}
+                  alt={`${banner.movieName} slide`}
+                /></Link>
               <Carousel.Caption>
                 <h3>{banner.movieName}</h3>
                 <p>{banner.description}</p>

@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import MovieDetail from './components/movieDetail';
 import React, { useState, useEffect, useContext } from 'react';
 import { MovieContext } from './movieContext';
+import Search from './components/search';
 
 
 
@@ -58,7 +59,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Banner trendingResult={trendingResult} bannerResult={bannerResult} actionResult={actionResult} />} />
           <Route path="/movie" element={<MovieDetail />} />
-          <Route path="/watchlist" element={<MovieDetail />} />
+          <Route path="/search" element={<Search />} />
         </Routes>
       </Router></div>
   );
