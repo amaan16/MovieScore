@@ -1,0 +1,74 @@
+/* Modal Overlay */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: black;
+    padding: 20px;
+    border-radius: 8px;
+    width: 500px;
+    text-align: center;
+}
+
+/* Stars Container */
+.stars-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.star {
+    font-size: 2em;
+    cursor: pointer;
+    color: #ccc; /* Default star color */
+    transition: color 0.2s;
+}
+
+.star.filled {
+    color: #ffcd3c; /* Filled star color */
+}
+
+/* Display selected rating */
+.rating-display {
+    margin: 10px 0;
+    font-size: 1.2em;
+}
+
+/* Buttons */
+button {
+    padding: 8px 16px;
+    font-size: 1em;
+    cursor: pointer;
+    margin: 5px;
+    border: none;
+    border-radius: 4px;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+button:first-child {
+    background-color: #28a745;
+    color: white;
+}
+
+button:last-child {
+    background-color: #dc3545;
+    color: white;
+}

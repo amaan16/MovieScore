@@ -5,7 +5,6 @@ import React, { useContext } from 'react';
 import { MovieContext } from '../movieContext';
 import NavBar from './navBar';
 
-const API_BASE_URL = "https://moviescorebackend-abbscmgzexfdfhg0.northcentralus-01.azurewebsites.net";
 
 function Banner({ trendingResult, bannerResult, actionResult }) {
   const { setSelectedMovie } = useContext(MovieContext);

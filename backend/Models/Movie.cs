@@ -10,6 +10,7 @@ namespace MovieScore.Models
         public string Writers { get; set; }
         public string Actors { get; set; }
         public double Rating { get; set; } // Assuming rating as a decimal value
+        public int RatingCount { get; set; }
         public string Tag { get; set; }
         public string Type { get; set; } // e.g., Genre
         public string? Path { get; set; } // Path to movie image or file

@@ -1,0 +1,77 @@
+/* Ensure a bright white color for all text */
+.movie-detail {
+    padding: 10px;
+    color: #ffffff;
+    /* Bright white text */
+}
+
+/* Add padding to the top so the title starts below the navbar */
+.movie-detail {
+    padding-top: 80px;
+    /* Adjust based on navbar height */
+}
+
+.movie-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.movie-header h1 {
+    color: #ffffff;
+    font-weight: bold;
+  }
+
+.rating-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+  
+  .rate-button,
+.watchlist-button :hover{
+      background-color: #e50914;
+      color: #ffffff;
+  }
+
+.rate-button,
+.watchlist-button {
+    font-size: 0.9em;
+    cursor: pointer;
+    background-color: #e50914 !important;
+    color: #ffffff;
+    border-color: #e50914;
+    border-radius: 10px;
+}
+
+.movie-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.movie-image {
+    max-width: 300px;
+    border-radius: 8px;
+}
+
+.movie-info {
+    flex: 1;
+}
+
+.description {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+
+
+.background-container {
+    background-color: black;
+    min-height: 100vh;
+    /* Ensures background covers the full viewport height */
+}
+
+body {
+    background-color: black;
+}
