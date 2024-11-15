@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 import NavBar from './navBar';
 import './search.css';
 
+const API_BASE_URL = "https://moviescorebackend-abbscmgzexfdfhg0.northcentralus-01.azurewebsites.net";
+
+
 function Search() {
     const [searchTerm, setSearchTerm] = useState('');
     const [searchResult, setSearchResult] = useState([]);
@@ -12,7 +15,7 @@ function Search() {
     const handleSearch = async (e) => {
         e.preventDefault();
 
-        const response = await fetch(`http://localhost:5057/search/${searchTerm}`);
+        const response = await fetch(API_BASE_URL+ `/search/${searchTerm}`);
         const data = await response.json();
 
         setSearchResult(data); // Update search result
