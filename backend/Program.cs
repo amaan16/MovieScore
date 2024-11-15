@@ -9,8 +9,6 @@ using MovieScore.Models;
 using MovieScore;
 
 
-
-
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -115,6 +113,57 @@ app.MapGet("/movies", () =>
 })
 .WithName("Get Movies")
 .WithOpenApi();
+
+app.MapGet("/movies/{id}", async (int id) =>
+{
+    var options = new JsonSerializerOptions
+    {
+        PropertyNameCaseInsensitive = true
+    };
+
+    using (MSContext movieContext = new MSContext())
+    {
+        // Find the movie with the given id
+        var movie = await movieContext.Movies
+                                      .FirstOrDefaultAsync(m => m.Id == id);
+        
+        if (movie == null)
+        {
+            return Results.NotFound(new { message = "Movie not found" });
+        }
+
+        return Results.Ok(movie);
+    }
+})
+.WithName("Get Movie By Id")
+.WithOpenApi();
+
+
+app.MapPut("/movies/rate/{id}/{newRating}", async (int id,int newRating) =>
+{
+    using (var movieContext = new MSContext())
+    {
+        // Find the movie by ID
+        var movie = await movieContext.Movies.FindAsync(id);
+        
+        if (movie == null)
+        {
+            return Results.NotFound(new { message = "Movie not found" });
+        }
+
+        // Update rating and rating count (average rating calculation)
+        movie.RatingCount += 1;
+        movie.Rating = (movie.Rating * (movie.RatingCount - 1) + newRating) / movie.RatingCount;
+
+        // Save changes to the database
+        await movieContext.SaveChangesAsync();
+
+        return Results.Ok(movie);  // Return the updated movie object
+    }
+})
+.WithName("Update Movie Rating")
+.WithOpenApi();
+
 
 
 

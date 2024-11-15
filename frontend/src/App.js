@@ -2,14 +2,15 @@ import './App.css';
 import Banner from './components/banner';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import MovieDetail from './components/movieDetail';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { MovieContext } from './movieContext';
+
 
 
 const API_BASE_URL = "https://moviescorebackend-abbscmgzexfdfhg0.northcentralus-01.azurewebsites.net";
 
 
 function App() {
-
   const [trendingResult, setTrendingResult] = useState([]);
   const [bannerResult, setBannerResult] = useState([]);
   const [actionResult, setActionResult] = useState([]);
@@ -32,12 +33,14 @@ function App() {
   useEffect(() => {
     // Fetch all movies and process them into separate lists
     const fetchAndProcessMovies = async () => {
-      const allMovies = await fetchAllMovies();
+      const tempMovies = await fetchAllMovies();
+      
+      console.log(tempMovies);
 
       // Separate movies by tags
-      const trending = allMovies.filter(movie => movie.tag === 'trending');
-      const banner = allMovies.filter(movie => movie.tag === 'banner');
-      const action = allMovies.filter(movie => movie.tag === 'action');
+      const trending = tempMovies.filter(movie => movie.tag === 'trending');
+      const banner = tempMovies.filter(movie => movie.tag === 'banner');
+      const action = tempMovies.filter(movie => movie.tag === 'action');
 
       // Update the state with filtered movies
       setTrendingResult(trending);
@@ -46,6 +49,7 @@ function App() {
     };
 
     fetchAndProcessMovies();
+
   }, []);
 
   return (
