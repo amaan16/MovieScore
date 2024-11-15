@@ -16,11 +16,12 @@ function Banner({ trendingResult, bannerResult, actionResult }) {
         <Carousel>
           {bannerResult.map((banner, index) => (
             <Carousel.Item key={index}>
+                            <Link to={`/movie`} key={banner.id} onClick={() => setSelectedMovie(banner)}>
               <img
                 className="d-block w-100"
                 src={'/images' + banner.backdropPath}
                 alt={`${banner.movieName} slide`}
-              />
+              /></Link>
               <Carousel.Caption>
                 <h3>{banner.movieName}</h3>
                 <p>{banner.description}</p>
@@ -54,7 +55,7 @@ function Banner({ trendingResult, bannerResult, actionResult }) {
           <h5 className="text-white">Action Movies</h5>
           <div className="rowposter mt-3 p-3">
             {actionResult.map((b) => (
-              <Link to={`/movie/${b.id}`} key={b.id}>
+              <Link to={`/movie`} key={b.id} onClick={() => setSelectedMovie(b)}>
                 <img
                   src={'/images' + b.path}
                   className="rowing largeposter"

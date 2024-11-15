@@ -19,6 +19,10 @@ function MovieDetail() {
         // Here, you could add logic to save the rating in the backend or state
     };
 
+    const addToWatchlist = () => {
+        
+    }
+
     console.log(selectedMovie)
     if (!selectedMovie) return <p>No movie selected</p>;
     return (
@@ -34,7 +38,7 @@ function MovieDetail() {
                             ⭐ {selectedMovie.rating.toFixed(1)}/10   {/* ({ratingCount}) */}
                         </h4>                        
                         <button className="rate-button" onClick={handleOpenModal}>Rate it</button>
-                        <button className="watchlist-button">+ Watchlist</button>
+                        <button className="watchlist-button" onClick={addToWatchlist}>+ Watchlist</button>
                     </div>
                 </div>
 
